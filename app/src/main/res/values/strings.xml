@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BSI Project</string>
+    <string-array name="UserType">
+        <item>Select User Type</item>
+        <item>Customer</item>
+        <item>Service_Provider</item>
+    </string-array>
+</resources>
