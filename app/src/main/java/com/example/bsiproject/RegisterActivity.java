@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this,"Successfully Registered and data Uploaded, Verification E-Mail has been sent",Toast.LENGTH_SHORT).show();
                             firebaseAuth.signOut();
                             finish();
-                            startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                            startActivity(new Intent(RegisterActivity.this,MainLogin.class));
                         }
                         else{
                             Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
         userLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                startActivity(new Intent(RegisterActivity.this,MainLogin.class));
             }
         });
     }
@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this,"Successfully Registered and data Uploaded, Verification E-Mail has been sent",Toast.LENGTH_SHORT).show();
                         firebaseAuth.signOut();
                         finish();
-                        startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                        startActivity(new Intent(RegisterActivity.this,MainLogin.class));
                     }
                     else{
                         Toast.makeText(RegisterActivity.this,"Verification E-Mail hasn't been sent, Try Again",Toast.LENGTH_SHORT).show();
