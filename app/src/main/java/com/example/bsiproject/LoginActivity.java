@@ -38,7 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser user=firebaseAuth.getCurrentUser();
         if(user!=null){
             finish();
-            startActivity(new Intent(LoginActivity.this, Customer.class));
+            checkusertype();
+            //startActivity(new Intent(LoginActivity.this, Customer.class));
         }
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,19 +105,18 @@ public class LoginActivity extends AppCompatActivity {
     private void checkusertype(){
         if(firebaseAuth.getUid()!=null){
             DatabaseReference ref1=firebaseDatabase.getReference("User");
-            System.out.println(firebaseAuth.getUid());
             DatabaseReference databaseReference=ref1.child(firebaseAuth.getUid());
-//            DatabaseReference databaseReference=firebaseDatabase.getReference(firebaseAuth.getUid());
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     UserProfile userProfile=dataSnapshot.getValue(UserProfile.class);
                     String type=userProfile.getUserType();
-                    if(type.equals("Customer")){
-                        startActivity(new Intent(LoginActivity.this,Customer.class));
-                    }
+                    System.out.println(type);
                     if(type.equals("Service_Provider")){
                         startActivity(new Intent(LoginActivity.this,Service_Provider.class));
+                    }
+                    if(type.equals("Customer")){
+                        startActivity(new Intent(LoginActivity.this,Customer.class));
                     }
                 }
                 @Override

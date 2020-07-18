@@ -2,17 +2,11 @@ package com.example.bsiproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-
-import java.util.Queue;
 
 public class Electrical extends AppCompatActivity {
     private TextView Txt1,Txt2,Txt3,Txt4,Txt5;
@@ -25,7 +19,9 @@ public class Electrical extends AppCompatActivity {
         Txt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Electrical.this,ff.class));
+                Intent intent=new Intent(Electrical.this,get_list.class);
+                intent.putExtra("service",Txt1.getText().toString());
+                startActivity(intent);
             }
         });
     }

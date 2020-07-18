@@ -166,13 +166,15 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
     private void sendUserData(){
-//        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-//        DatabaseReference myref=firebaseDatabase.getReference(firebaseAuth.getUid());
-//        UserProfile userProfile=new UserProfile(age,phoneNumber,name,type);
-//        myref.setValue(userProfile);
           DatabaseReference myref = FirebaseDatabase.getInstance().getReference("User");
           String id=firebaseAuth.getUid();
           UserProfile userProfile=new UserProfile(age,phoneNumber,name,type,id);
           myref.child(id).setValue(userProfile);
+          if(type.equals("Service_Provider")){
+              DatabaseReference ref1=FirebaseDatabase.getInstance().getReference("Provider");
+              Float rating = 5.0f;
+              Provider provider=new Provider(age,phoneNumber,name,id,rating);
+              ref1.child(id).setValue(provider);
+          }
     }
 }
