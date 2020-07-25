@@ -1,5 +1,7 @@
 package com.example.bsiproject;
 
+import java.util.Comparator;
+
 public class Provider {
     public String age;
     public String phoneNumber;
@@ -57,4 +59,13 @@ public class Provider {
     public void setRating(Float rating) {
         this.rating = rating;
     }
+
+    public static Comparator<Provider> RatingComparator = new Comparator<Provider>(){
+
+        public int compare(Provider p1,Provider p2){
+            Float f1=p1.rating;
+            Float f2=p2.rating;
+            return f2.compareTo(f1);
+        }
+    };
 }
